@@ -35,7 +35,7 @@ namespace DbProxy
 
             if (reader.Read()) { 
               foreach (var prop in type.GetProperties()) {
-                    prop.SetValue(oResult, reader[prop.Name]);
+                    prop.SetValue(oResult, reader[prop.Name] is DBNull ? null : reader[prop.Name]);
                 }
             }
 
